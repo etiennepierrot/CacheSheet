@@ -25,7 +25,7 @@ jobs:
       run: dotnet test
     - name: Publish nuget
       run: |
-          for f in .CacheSheet/src/CacheSheet/bin/Release/*.nupkg
+          for f in $HOME/work/CacheSheet/CacheSheet/src/CacheSheet/bin/Release/*.nupkg
           do
             curl -vX PUT -u "etiennepierrot-nuget:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/etiennepierrot-nuget/
           done
