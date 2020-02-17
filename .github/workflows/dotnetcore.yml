@@ -22,7 +22,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
     - name: Publish nuget
-    - name: Publish nuget
       run: |
           for f in ./[repository]/bin/Release/*.nupkg
           do
