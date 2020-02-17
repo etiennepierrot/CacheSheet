@@ -21,10 +21,12 @@ jobs:
         dotnet-version: '3.1.100'
     - name: Build
       run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+    - name: Tests
+      run: dotnet test
     - name: Publish nuget
       run: |
-          for f in ./[repository]/bin/Release/*.nupkg
+          for f in .CacheSheet/src/CacheSheet/bin/Release/*.nupkg
           do
-            curl -vX PUT -u "[user]:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/etiennepierrot-nuget/
+            curl -vX PUT -u "etiennepierrot-nuget:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/etiennepierrot-nuget/
           done
       shell: bash
