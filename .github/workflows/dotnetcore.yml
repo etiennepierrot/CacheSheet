@@ -16,7 +16,7 @@ jobs:
       - name: ls $HOME/secrets/
         run: ls $HOME/secrets/
       - name: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
-        run: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
+        run: cp $HOME/secrets/cachesheet-accountservice.json $HOME/runner/work/CacheSheet/CacheSheet/test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
       - name: ls ./test/CacheSheet.Tests.Interop/
         run: ls ./test/CacheSheet.Tests.Interop/
 
