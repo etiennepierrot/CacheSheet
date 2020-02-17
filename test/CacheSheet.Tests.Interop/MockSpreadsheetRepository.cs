@@ -17,5 +17,10 @@ namespace CacheSheet.Tests.Interop
             CountCall++;
             return await Task.FromResult(new List<T>());
         }
+
+        public async Task<Dictionary<string, string>> GetDictionaryAsync(string range)
+        {
+            return await Task.FromResult(new Dictionary<string, string>());
+        }
     }
 }
