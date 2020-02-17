@@ -3,29 +3,23 @@ name: .NET Core
 on: [push]
 
 jobs:
-
-  my-job:
-    name: My Job
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Decrypt large secret
-        run: ./decrypt_secret.sh
-        env:
-          PASSPHRASE: ${{ secrets.PASSPHRASE }}
-      - name: ls $HOME/secrets/
-        run: ls $HOME/secrets/
-      - name: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
-        run: cp $HOME/secrets/cachesheet-accountservice.json $HOME/runner/work/CacheSheet/CacheSheet/test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
-      - name: ls ./test/CacheSheet.Tests.Interop/
-        run: ls ./test/CacheSheet.Tests.Interop/
-
   build:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+    - name: Decrypt large secret
+        run: ./decrypt_secret.sh
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+    - name: ls $HOME/secrets/
+      run: ls $HOME/secrets/
+    - name: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
+      run: cp $HOME/secrets/cachesheet-accountservice.json $HOME/runner/work/CacheSheet/CacheSheet/test/CacheSheet.Tests.Interop/
+    - name: ls ./test/CacheSheet.Tests.Interop/
+      run: ls ./test/CacheSheet.Tests.Interop/
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
