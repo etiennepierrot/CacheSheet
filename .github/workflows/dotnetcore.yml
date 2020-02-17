@@ -13,9 +13,11 @@ jobs:
         run: ./decrypt_secret.sh
         env:
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
-      - name: Test printing your secret (Remove this step in production)
+      - name: ls $HOME/secrets/
         run: ls $HOME/secrets/
+      - name: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
         run: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
+      - name: ls ./test/CacheSheet.Tests.Interop/
         run: ls ./test/CacheSheet.Tests.Interop/
 
   build:
