@@ -27,6 +27,8 @@ jobs:
       run: |
           for f in $HOME/work/CacheSheet/CacheSheet/src/CacheSheet/bin/Release/*.nupkg
           do
-            curl -vX PUT -u "etiennepierrot-nuget:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/etiennepierrot-nuget/
+            dotnet nuget push  $f -k {{ secrets.NUGET_KEY }} -s https://api.nuget.org/v3/index.json
           done
       shell: bash
+
+      # curl -vX PUT -u "etiennepierrot-nuget:${{ secrets.NUGET_KEY }}" -F package=@$f https://www.nuget.org/api/v2/package/etiennepierrot-nuget/
