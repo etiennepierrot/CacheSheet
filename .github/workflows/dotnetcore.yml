@@ -14,8 +14,7 @@ jobs:
         env:
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
       - name: Test printing your secret (Remove this step in production)
-        run: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/
-        
+        run: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
   build:
 
     runs-on: ubuntu-latest
