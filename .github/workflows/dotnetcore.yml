@@ -20,8 +20,12 @@ jobs:
       with:
         dotnet-version: '3.1.100'
     - name: Build
-      run: dotnet build --configuration Release
-    - name: Test
-      run: dotnet test
-    
- 
+      run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+    - name: Publish nuget
+    - name: Publish nuget
+      run: |
+          for f in ./[repository]/bin/Release/*.nupkg
+          do
+            curl -vX PUT -u "[user]:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/etiennepierrot-nuget/
+          done
+      shell: bash
