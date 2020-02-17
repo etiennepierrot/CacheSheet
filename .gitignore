@@ -1,0 +1,15 @@
+bin/
+obj/
+/packages/
+/test/CacheSheet/credentials.json
+/test/CacheSheet.Tests/cachesheet-accountservice.json
+/test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
+/.idea/.idea.CacheSheet/.idea/contentModel.xml
+/.idea/.idea.CacheSheet/.idea/encodings.xml
+/.idea/.idea.CacheSheet/.idea/indexLayout.xml
+/.vscode/launch.json
+/.idea/.idea.CacheSheet/.idea/modules.xml
+/.idea/.idea.CacheSheet/.idea/projectSettingsUpdater.xml
+/.idea/.idea.CacheSheet/riderModule.iml
+/.ionide/symbolCache.db
+/.idea/.idea.CacheSheet/.idea/vcs.xml
