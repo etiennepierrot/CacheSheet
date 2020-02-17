@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+	 <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.1" />
+	 <PackageReference Include="SheetToObjects.Adapters.ProtectedGoogleSheets" Version="2.5.0" />
+	 <PackageReference Include="SheetToObjects.Lib" Version="2.5.0" />
+	 <PackageReference Include="Google.Apis.Sheets.v4" Version="1.43.0.1856" />
+    </ItemGroup>
+
+</Project>
