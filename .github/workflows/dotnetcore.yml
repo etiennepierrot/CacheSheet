@@ -10,9 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Decrypt large secret
-        run: ./decrypt_secret.sh
-        env:
-          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      run: ./decrypt_secret.sh
+      env:
+        PASSPHRASE: ${{ secrets.PASSPHRASE }}
     - name: ls $HOME/secrets/
       run: ls $HOME/secrets/
     - name: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
@@ -26,3 +26,4 @@ jobs:
         dotnet-version: '3.1.100'
     - name: Build with dotnet
       run: dotnet build --configuration Release
+cd 
