@@ -25,5 +25,11 @@ namespace CacheSheet
         {
             return await _dataRepository.LoadAllAsync<T>();
         }
+
+        public async Task<Dictionary<string, string>> GetDictionary(string range)
+        {
+            return await _dataRepository.GetDictionaryAsync(range);
+        }
     }
+    
 }

@@ -15,3 +15,5 @@ obj/
 /.idea/.idea.CacheSheet/.idea/vcs.xml
 /.vs/CacheSheet
 /CacheSheet.sln.DotSettings.user
+.DS_Store
+artifacts/

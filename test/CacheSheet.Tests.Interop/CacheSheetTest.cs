@@ -62,6 +62,19 @@ namespace CacheSheet.Tests.Interop
             var users2 = await sheetCache.Get<User>();
             users2.Single().Should().BeEquivalentTo(user1.Single());
         }
+        
+        [Fact]
+        public async Task MapDictionary_From_Sheet()
+        {
+            SheetCache sheetCache = new SheetCache(_spreadsheetRepository);
+            Dictionary<string, string> dictionary = await sheetCache.GetDictionary("Dictionary");
+            
+            dictionary.Should().BeEquivalentTo(new Dictionary<string, string>()
+            {
+                {"fizz", "buzz"},
+                {"foo", "bar"}
+            });
+        }
 
         private SheetMapperWrapper BuildSheetMapperWrapper()
         {

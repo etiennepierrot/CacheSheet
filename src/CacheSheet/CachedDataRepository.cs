@@ -39,7 +39,18 @@ namespace CacheSheet
                 }
             );
         }
-        
+
+        public async Task<Dictionary<string, string>> GetDictionaryAsync(string range)
+        {
+            return await _memoryCache.GetOrCreate(range,
+                entry =>
+                {
+                    entry.AbsoluteExpiration = EntryAbsoluteExpiration();
+                    return _dataRepository.GetDictionaryAsync(range);
+                }
+            );
+        }
+
         private DateTime EntryAbsoluteExpiration()
         {
             return DateTime.Now.Add(_expiration);
