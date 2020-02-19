@@ -40,7 +40,7 @@ jobs:
       run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
       shell: bash
     - name: Version
-      run: echo ${{ github.ref }} 
+      run: echo $VERSION
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
