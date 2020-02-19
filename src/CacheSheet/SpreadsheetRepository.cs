@@ -12,13 +12,13 @@ namespace CacheSheet
         private readonly string _spreadSheetId;
         private readonly string _pathCredential;
         private readonly ProtectedGoogleSheetAdapter _adapter;
-        private readonly ConfigMapper _configMapper;
+        private readonly SheetMapperWrapper _sheetMapperWrapper;
 
-        public SpreadsheetRepository(string spreadSheetId, string pathCredential, ConfigMapper configMapper)
+        public SpreadsheetRepository(string spreadSheetId, string pathCredential, SheetMapperWrapper sheetMapperWrapper)
         {
             _spreadSheetId = spreadSheetId;
             _pathCredential = pathCredential;
-            _configMapper = configMapper;
+            _sheetMapperWrapper = sheetMapperWrapper;
             _adapter = new ProtectedGoogleSheetAdapter();
         }
 
@@ -32,9 +32,9 @@ namespace CacheSheet
 
         public async Task<IEnumerable<T>> LoadAllAsync<T>() where T : new()
         {
-            string range = _configMapper.ConfigRange[typeof(T)];
+            string range = _sheetMapperWrapper.GetRange(typeof(T));
             var result = await ReadSheetAsync(range);
-            return _configMapper.SheetMapper.Map<T>(result)
+            return _sheetMapperWrapper.Map<T>(result)
                 .ParsedModels.Select(m => m.Value);
         }
 
