@@ -13,3 +13,5 @@ obj/
 /.idea/.idea.CacheSheet/riderModule.iml
 /.ionide/symbolCache.db
 /.idea/.idea.CacheSheet/.idea/vcs.xml
+.DS_Store
+artifacts/
