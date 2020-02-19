@@ -10,7 +10,10 @@ jobs:
     - name: Decrypt large secret
       run: ./decrypt_secret.sh
       env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
         PASSPHRASE: ${{ secrets.PASSPHRASE }}
+    - name: display github context
+      run: echo "$GITHUB_CONTEXT"
     - name: cp $HOME/secrets/cachesheet-accountservice.json ./test/CacheSheet.Tests.Interop/cachesheet-accountservice.json
       run: cp $HOME/secrets/cachesheet-accountservice.json $HOME/work/CacheSheet/CacheSheet/test/CacheSheet.Tests.Interop/
     - name: Setup .NET Core
@@ -35,6 +38,7 @@ jobs:
         dotnet-version: 3.1.100
     - name: Determine version
       run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
+      shell: bash
     - name: Rebuild
       run: dotnet build  src/CacheSheet/CacheSheet.csproj --configuration Release
     - name: Package
