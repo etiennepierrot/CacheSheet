@@ -49,6 +49,8 @@ jobs:
       run: dotnet build src/CacheSheet/CacheSheet.csproj --configuration Release
     - name: Package
       run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v1
       with:
         name: artifacts
