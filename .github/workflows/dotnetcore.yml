@@ -41,8 +41,8 @@ jobs:
       shell: bash
     - name: Version
       run: echo ${{ github.ref }} 
-      with: 
-        PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       
     - name: Rebuild
