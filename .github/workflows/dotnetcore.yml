@@ -35,8 +35,10 @@ jobs:
         dotnet-version: 3.1.100
     - name: Determine version
       run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
-    - name: Pack
-      run: dotnet build  src/CacheSheet/CacheSheet.csproj --configuration Release && dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
+    - name: Rebuild
+      run: dotnet build  src/CacheSheet/CacheSheet.csproj --configuration Release
+    - name: Package
+      run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
     - uses: actions/upload-artifact@v1
       with:
         name: artifacts

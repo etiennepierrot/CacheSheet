@@ -1,8 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheSheet", "src\CacheSheet\CacheSheet.csproj", "{315F9F81-4E14-4CC8-8473-60F68CD3C2DA}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheSheet", "src\CacheSheet\CacheSheet.csproj", "{315F9F81-4E14-4CC8-8473-60F68CD3C2DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CecheSheet.Tests.Interop", "test\CacheSheet.Tests.Interop\CacheSheet.Tests.Interop.csproj", "{30B17516-2398-4BBE-8D5A-3CA175F25061}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheSheet.Tests.Interop", "test\CacheSheet.Tests.Interop\CacheSheet.Tests.Interop.csproj", "{30B17516-2398-4BBE-8D5A-3CA175F25061}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{679E0DE4-E719-4DFC-A59E-F35B4F2CFA9B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		decrypt_secret.sh = decrypt_secret.sh
+		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +29,11 @@ Global
 		{30B17516-2398-4BBE-8D5A-3CA175F25061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B17516-2398-4BBE-8D5A-3CA175F25061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B17516-2398-4BBE-8D5A-3CA175F25061}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4477582-DCD1-41FD-B993-068697896151}
 	EndGlobalSection
 EndGlobal
