@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Caching.Memory;
-using SheetToObjects.Lib;
-using SheetToObjects.Lib.FluentConfiguration;
+using StackExchange.Redis;
 using Xunit;
 using MemoryCache = Microsoft.Extensions.Caching.Memory.MemoryCache;
 
@@ -21,17 +21,11 @@ namespace CacheSheet.Tests.Interop
 
         public CacheSheetTest()
         {
-            _spreadsheetRepository = new SpreadsheetRepository(
-                "1bQSXT__TWOlymomJ_XplrrWcLF2pCcoUFiCfQ2VHD-g",
-                "cachesheet-accountservice.json",
-                BuildSheetMapperWrapper()
-            );
-            _mockRepository = new MockSpreadsheetRepository();
+            _spreadsheetRepository = ServiceFactory.CreateSpreadSheetRepository();
+            _mockRepository = ServiceFactory.CreateMockSpreadsheetRepository();
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
             _cachedMockedDataRepository = new CachedDataRepository(_mockRepository, memoryCache, TimeSpan.FromSeconds(1));
             _cachedDataRepository = new CachedDataRepository(_spreadsheetRepository, memoryCache, TimeSpan.FromSeconds(1));
-
-
         }
         [Fact]
         public async Task HelloWorld_From_Sheet()
@@ -76,25 +70,7 @@ namespace CacheSheet.Tests.Interop
             });
         }
 
-        private SheetMapperWrapper BuildSheetMapperWrapper()
-        {
-            return new SheetMapperWrapper(new SheetMapper(), new Dictionary<Type, string>())
-               .AddConfigFor<User>(cfg =>
-               {
-                   return cfg
-                       .MapColumn(column => column.WithHeader("User Name").IsRequired()
-                           .MapTo(m => m.Username))
-                       .MapColumn(column => column.WithHeader("Age").IsRequired()
-                           .MapTo(m => m.Age));
-               }, "Users");
-        }
-
-        class User
-        {
-            public string Username { get; internal set; }
-            public int Age { get; internal set; }
-        }
-
+        
         [Fact]
         public async Task HelloWorld_From_Cache()
         {

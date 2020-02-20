@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace CacheSheet.Tests.Interop
 {
-    class MockSpreadsheetRepository : DataRepository
+    public class MockSpreadsheetRepository : DataRepository
     {
         public int CountCall;
         public Task<string[][]> GetAsync(string range)
