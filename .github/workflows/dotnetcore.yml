@@ -21,9 +21,9 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Build
-      run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+      run: dotnet build --configuration Release
     - name: Tests
-      run: dotnet test
+      run: docker-compose run test
 
   pack:
     runs-on: ubuntu-latest
