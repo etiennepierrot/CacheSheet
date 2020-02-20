@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  test:
+    image: cachesheet:latest
+    container_name: test-cachesheet
+    depends_on:
+      - "redis_image"
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    links:
+      - "redis_image"
+
+    # The Application needs a connection string for Redis, this just needs to be the Redis Service name as defined below
+    # Pass it in as an Environmental Variable
+    environment:
+      - RedisConnection=redis_image
+
+  redis_image:
+    image: redis
+    container_name: redis.cache
+
+    

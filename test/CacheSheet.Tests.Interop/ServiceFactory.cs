@@ -40,7 +40,7 @@ namespace CacheSheet.Tests.Interop
         {
             var redisCache = new RedisCache(Options.Create( new RedisCacheOptions()
             {
-                Configuration = "127.0.0.1:6379",
+                Configuration = "redis_image:6379,abortConnect=False",
             }));
             return new DistributedCachedDataRepository(dataRepository, redisCache, expiration);
         }
