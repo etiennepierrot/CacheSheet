@@ -6,6 +6,7 @@ services:
     container_name: test-cachesheet
     depends_on:
       - "redis_image"
+    command: ["./wait-for-it.sh", "redis:5432", "--", "dotnet test", ""]
 
     build:
       context: .
